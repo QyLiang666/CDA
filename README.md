@@ -3,7 +3,7 @@
 
 ------
 
-![ISFDA Framework](./figs/ISFDA.png)
+![ISFDA Framework](./figs/CDA.jpg)
 
 ### Prerequisites
 
