@@ -78,7 +78,7 @@ We thank Shuhan Tan for providing the data split txt files for Office-Home (RSUT
    - Adaptation to target domains **Product**(t=1) and **Real World**(t=3) one by one.
 
     ```python
-   python image_target_multi_lb_2_original.py
+   python image_target_multi_lb_2_original.py \
    --cls_par 0.3 \
    --da uda \
    --dset office-home-RSUT \
@@ -89,15 +89,17 @@ We thank Shuhan Tan for providing the data split txt files for Office-Home (RSUT
    --output ./exp_home/isfda \
    --net resnet50 \
    --lr 1e-2  \
-   --msl 5 \
-   --negative_learning \
-   --no_threshold_k \
+   --topk_ent \
    --unknown_weight \
    --unknown_weight_par 0.3 \
    --gent_decay \
    --autoaugment \
-   --abc \
    --autoaugment_par 0.5 \
+   --negative_learning \
+   --msl 2 \
+   --no_threshold_k \
+   --consistency_threshold 0.8 \
+   --abc \
    --abc_par 0.5 \
    --abc_begin_epoch 15 \
     ```
@@ -136,14 +138,17 @@ We thank Shuhan Tan for providing the data split txt files for Office-Home (RSUT
    --output ./exp_visda/isfda \
    --net resnet101 \
    --lr 1e-3  \
+   --topk_ent \
    --msl 5 \
    --negative_learning \
    --no_threshold_k \
    --unknown_weight \
    --gent_decay \
+   --gent_decay_weight 0 \
    --autoaugment \
+   --consistency_threshold 0.8 \
    --abc \
-   --abc_begin_epoch 10 \
+   --abc_begin_epoch 5 \
    ```
    
 3. **Training on the DomainNet dataset**
@@ -181,17 +186,20 @@ We thank Shuhan Tan for providing the data split txt files for Office-Home (RSUT
    --output ./exp_dom/isfda \
    --net resnet50 \
    --lr 1e-2  \
-   --msl 5 \
+   --topk_ent \
+   --msl 2 \
    --negative_learning \
    --no_threshold_k \
    --unknown_weight \
    --unknown_weight_par 0.3 \
    --gent_decay \
+   --gent_decay_weight 0 \
+   --consistency_threshold 0.8 \
    --autoaugment \
    --abc \
    --autoaugment_par 0.5 \
    --abc_par 0.5 \
-   --abc_begin_epoch 15 \
+   --abc_begin_epoch 10 \
    ```
 
 

@@ -898,6 +898,7 @@ if __name__ == "__main__":
     parser.add_argument('--unknown_weight_par', type=float, default=1)
     parser.add_argument('--autoaugment_par', type=float, default=1)
     parser.add_argument('--abc_par', type=float, default=1)
+    parser.add_argument('--wandb_new_project_name', type=str, default="new_project")
     args = parser.parse_args()
     args.interval = args.max_epoch
 
@@ -955,7 +956,7 @@ if __name__ == "__main__":
             args.s_dset_path = folder + args.dset + '/' + names[args.s] + '.txt'
             args.t_dset_path = folder + args.dset + '/' + names[args.t] + '.txt'
             args.test_dset_path = folder + args.dset + '/' + names[args.t] + '.txt'
-        wandb_name = names[args.s][0].upper() + "->" + names[args.t][0].upper() + "_" + args.wandb_name
+        wandb_name = names[args.s][0].upper() + "->" + names[args.t][0].upper() 
         print(wandb_name)
         project_name = "Imbalanced-SFDA" + "_" + args.dset + args.wandb_new_project_name
         with wandb.init(project = project_name, config = args.__dict__, name = wandb_name, save_code=True)  as run :
